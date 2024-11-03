@@ -80,7 +80,7 @@ export default function LeftSide({ theme, HandleThemes }) {
                     </div>
                 </div>
             </div>
-            <div className={`${views ? 'h-[69.2dvh]' : 'h-[76.7dvh]'} transition-all overflow-y-auto overflow-x-hidden`}>
+            <div className={`${views ? 'h-[70.5dvh]' : 'h-[77.9dvh]'} transition-all overflow-y-auto overflow-x-hidden`}>
                 {new Array(30).fill(0).map((item, index) => (
                     <div className="hover:bg-white hover:dark:bg-slate-800 transition-all" key={index}>
                         <div className="flex items-center gap-2">

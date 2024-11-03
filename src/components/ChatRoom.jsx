@@ -25,10 +25,10 @@ export default function ChatRoom() {
                         <img 
                         onClick={() => setImgs(true)}
                         src={profileimg} alt="" className="size-10 rounded-full cursor-pointer object-cover" />
-                        <div className="truncate">
+                        <Link to="/profile" className="truncate">
                             <div className="font-bold text-sm md:text-base truncate">Lorem ipsum dolor sit amet.</div>
                             <div className="text-sm text-slate-500 dark:text-slate-400 truncate">Lorem ipsum dolor sit, amet consectetur adipisicing elit.</div>
-                        </div>
+                        </Link>
                     </div>
                     <div className="flex items-center gap-3">
                         <button className="text-xl dark:text-slate-200 dark:hover:bg-slate-900 rounded-full hover:bg-slate-100 transition-all hover:scale-110 p-2"> <FaMagnifyingGlass /> </button>

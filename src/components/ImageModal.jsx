@@ -1,6 +1,6 @@
 import { LiaTimesSolid } from "react-icons/lia"
 import profileimg from "../assets/images/myprofile.jpeg"
-import imgbg from "../assets/images/img.jpeg"
+import imgbg from "../assets/images/img.jpg"
 import { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
 
