@@ -9,6 +9,7 @@ import { useState } from "react"
 import ImageModal from "./ImageModal"
 import PropTypes from "prop-types"
 import { Link } from "react-router-dom"
+import Imaged from "./Imaged"
 
 const Subs = [
     "all",
@@ -44,7 +45,7 @@ export default function LeftSide({ theme, HandleThemes }) {
             />}
             <div className="bg-white dark:bg-slate-800 h-[4rem]">
                 <div className="flex items-center gap-2 h-full w-11/12 mx-auto justify-between">
-                    <div className="font-extrabold text-3xl bg-clip-text text-transparent bg-gradient-to-tr from-orange-600 to-blue-600">Polar</div>
+                    <div className="font-extrabold text-3xl bg-clip-text text-transparent bg-gradient-to-tr from-orange-600 to-blue-600">Juiceout</div>
                     <div className="flex items-center gap-3">
                         <div
                             onClick={HandleThemes}
@@ -80,15 +81,15 @@ export default function LeftSide({ theme, HandleThemes }) {
                     </div>
                 </div>
             </div>
-            <div className={`${views ? 'h-[70.5dvh]' : 'h-[77.9dvh]'} transition-all overflow-y-auto overflow-x-hidden`}>
+            <div className={`${views ? 'h-[71.5dvh]' : 'h-[78.3dvh]'} transition-all overflow-y-auto overflow-x-hidden`}>
                 {new Array(30).fill(0).map((item, index) => (
                     <div className="hover:bg-white hover:dark:bg-slate-800 transition-all" key={index}>
                         <div className="flex items-center gap-2">
-                            <img
+                            <Imaged
                                 onClick={() => setImgs(true)}
                                 src={profileimg} alt="" className="size-12 cursor-pointer rounded-full object-cover ml-2" />
 
-                            <Link to="?chat=12039" className="border-b dark:border-slate-600 cursor-pointer grid grid-cols-7 items-center gap-1 w-full pr-4 py-3">
+                            <Link to="?chat=12039" className="border-b ml-2 dark:border-slate-600 cursor-pointer grid grid-cols-7 items-center gap-1 w-full pr-4 py-3">
                                 <div className="col-span-6">
                                     <div className="font-semibold truncate">Lorem ipsum dolor sit amet. and more telling stories and evens</div>
                                     <div className="text-sm text-zinc-500 truncate">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit, unde!</div>

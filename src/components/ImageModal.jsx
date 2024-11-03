@@ -3,6 +3,7 @@ import profileimg from "../assets/images/myprofile.jpeg"
 import imgbg from "../assets/images/img.jpg"
 import { useEffect, useRef } from "react"
 import PropTypes from "prop-types"
+import Imaged from "./Imaged"
 
 ImageModal.propTypes = {
     closeview: PropTypes.func
@@ -24,7 +25,7 @@ export default function ImageModal({closeview}) {
             <div className="bg-gradient-to-t from-transparent to-black/70">
                 <div className="flex items-center justify-between w-11/12 py-3 mx-auto">
                     <div className="flex items-center gap-2 text-white">
-                        <img src={profileimg} alt="" className="size-10 object-cover rounded-full" />
+                        <Imaged src={profileimg} alt="" className="size-10 object-cover rounded-full" />
                         <div className="">Lorem ipsum dolor sit amet.</div>
                     </div>
                     <div
@@ -33,7 +34,7 @@ export default function ImageModal({closeview}) {
                 </div>
             </div>
             <div className="w-full h-fit max-h-[80dvh] mt-5 mx-auto max-w-3xl imgsub">
-                <img src={imgbg} alt="" className="w-full h-full object-cover" />
+                <Imaged src={imgbg} alt="" className="w-full h-full object-cover" />
             </div>
         </div>
     )
