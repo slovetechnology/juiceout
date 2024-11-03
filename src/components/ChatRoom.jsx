@@ -9,6 +9,8 @@ import { useState } from "react"
 import Imaged from "./Imaged"
 import { LiaTimesSolid } from "react-icons/lia"
 import { PiTrash } from "react-icons/pi"
+import { Popover } from '@mantine/core';
+
 
 const ChatProps = [
     {
@@ -116,7 +118,6 @@ export default function ChatRoom() {
     const [searchText, setSearchText] = useState('')
     const [messageIds, setMessageIds] = useState([])
     const [ChatMessages, setChatMessages] = useState(ChatProps || [])
-    const [feed, setFeed] = useState('')
 
     const incomingCs = `bg-white dark:bg-slate-700 py-1.5 pr-1.5 pl-2 rounded-b-lg rounded-tr-lg w-fit max-w-[90%] lg:max-w-[60%] mb-1.5 ${theme === 'light' ? 'incoming' : 'incoming-dark'} shadow-md`
     const outgoingCs = `bg-[#E0FFFF] dark:bg-[#3f7777] py-1.5 pr-1.5 pl-2 rounded-b-lg rounded-tl-lg w-fit max-w-[90%] lg:max-w-[60%] ml-auto mb-1.5 ${theme === 'light' ? 'outgoing' : 'outgoing-dark'} shadow-md`
@@ -136,7 +137,7 @@ export default function ChatRoom() {
         setChatMessages(filterout)
         setMessageIds([])
     }
-    
+
 
     return (
         <>
@@ -181,23 +182,30 @@ export default function ChatRoom() {
                         const findId = messageIds.find(ele => ele === item.id)
                         return (
                             <div key={index} className={`flex items-center gap-10 relative`}>
-                                <div popover="auto" id="popup" className="absolute top-0 right-0 z-10 bg-white rounded-lg">
-                                    <div className="">{feed}</div>
-                                    <div className="p-2 text-sm capitalize border-b">reply</div>
-                                    <div className="p-2 text-sm capitalize border-b">reply privately</div>
-                                    <div className="p-2 text-sm capitalize border-b">forward</div>
-                                    <div className="p-2 text-sm capitalize border-b">pin</div>
-                                    <div className="p-2 text-sm capitalize border-b">star</div>
-                                    <div className="p-2 text-sm capitalize border-b">report</div>
-                                    <div className="p-2 text-sm capitalize border-b">delete</div>
-                                    <div className="p-2 text-sm capitalize border-b">message user directly</div>
-                                </div>
+
                                 {item.user === 'outgoing' &&
                                     <div
                                         onClick={() => HandleMessageIds(item.id)}
                                         className={`size-5 rounded-sm cursor-pointer border hover:rotate-180 dark:border-slate-400 ${findId ? 'bg-green-600 border-transparent' : 'border-slate-400'} hover:scale-110 transition-all`}></div>}
                                 <div className={`${item.user === 'incoming' ? incomingCs : outgoingCs}`}>
-                                    <div className="text-sm flex">{item.body} {item.user === 'outgoing' && <button popovertarget="popup" onClick={() => setFeed(item.id)} className="text-lg self-start"><FaEllipsisVertical /> </button>} </div>
+                                    <div className="text-sm flex">
+                                        {item.body}
+                                        {item.user === 'outgoing' && <Popover width={200} classNames="mr-5" position="bottom" withArrow shadow="lg">
+                                            <Popover.Target>
+                                                <button> <FaEllipsisVertical /> </button>
+                                            </Popover.Target>
+                                            <Popover.Dropdown className={`${theme === 'dark' ? '!bg-slate-700 !text-slate-200 !border-slate-700 !shadow-2xl' : ''} !p-0`}>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>reply</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>reply privately</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>forward</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>pin</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>star</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>report</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer border-b ${theme === 'dark' ? 'border-slate-500 hover:bg-slate-600' : 'hover:bg-slate-100'}`}>delete</div>
+                                                <div className={`p-2.5 text-xs capitalize cursor-pointer ${theme === 'dark' ? 'hover:bg-slate-600' : 'hover:bg-slate-100'}`}>message user directly</div>
+                                            </Popover.Dropdown>
+                                        </Popover>}
+                                    </div>
                                     <div className="text-right text-xs">{item.time}</div>
                                 </div>
                             </div>
